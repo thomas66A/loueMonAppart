@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'Godof';
+  src: url("../../font/GODOFWAR.TTF");
+  font-weight: normal;
+  font-style: normal; }
+
+body {
+  width: 100vw; }
+
+@font-face {
+  font-family: 'hobo';
+  src: url("../../font/HoboStd.otf");
+  font-weight: normal;
+  font-style: normal; }
+
+.ligne {
+  clear: both; }

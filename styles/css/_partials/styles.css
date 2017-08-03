@@ -1,0 +1,8 @@
+@font-face {
+  font-family: 'hobo';
+  src: url("../../font/HoboStd.otf");
+  font-weight: normal;
+  font-style: normal; }
+
+.ligne {
+  clear: both; }
