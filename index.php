@@ -40,7 +40,7 @@ Flight::route('/deconnec', function(){
 
 Flight::route('POST /creerCompteLocataire', function(){
     unset($_SESSION['erreur']);
-    $service = new loginService();
+    $service = new registerService();
     $service->setParams(Flight::request()->data->getData());
     $service->launchControls();
     if($service->getError()){

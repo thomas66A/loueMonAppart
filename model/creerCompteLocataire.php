@@ -64,21 +64,24 @@ class registerService
 
         $pass = $this->params['password'];
         $pass = strlen($pass);
-        if($pass<8 || $pass>16){
+        if($pass<3 || $pass>16){
             $this->error['passwordLength'] = 'Votre mot de passe doit avoir entre 8 a 16 caractere';
         }
 
         if (!preg_match('#^[\w.-]+@[\w.-]+\.[a-z]{2,6}$#i', $this->params['email']))
         {
-           $this->error['password'] = 'Votre email n\'est pas conforme'; 
+           $this->error['email'] = 'Votre email n\'est pas conforme'; 
         }
 
         if(empty($this->error) == false)
+        {
+        // var_dump($this->error['passwordLength']);
+        //     die();
         return $this->error;
-    
+        }
         $this->user = $this->checkAll();
         if(empty($this->user)){
-            $this->error['identifiant'] = 'Pas d\'enregistrement sous ce nom';
+            $this->error['identifiant'] = 'Locataire deja existant';
             return $this->error;
         }
         else
@@ -87,24 +90,41 @@ class registerService
         }
         }
         public function checkAll(){
-            $username = $this->params['username'];
-            $password = $this->params['email'];
+            $nom = $this->params['nom'];
+            $email = $this->params['email'];
             $connexion = new PDO('mysql:host=localhost;dbname=locappart;charset=UTF8','root','root');
             $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $connexion->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
-            $objet = $connexion->prepare('SELECT id, username, email FROM user WHERE username=:username AND email=:email');
+            $objet = $connexion->prepare('SELECT nom, email FROM locataire WHERE nom=:nom AND email=:email');
             $objet->execute(array(
                 'email' => $this->params['email'],
-                'username' => $this->params['username']
+                'nom' => $this->params['nom']
             ));
             $user = $objet->fetchAll(PDO::FETCH_ASSOC);
             if(empty($user)){
-                        $objet = $connexion->prepare('INSERT INTO locataire VALUES (username=:username, email=:email, password=:password)');
+                        $prenom = $this->params['prenom'];
+                        $date = date('d-m-y');
+                        $password = $this->params['password'];
+                        $telephone = $this->params['telephone'];
+                        $dejaLoc = 0;
+                        $objet = $connexion->prepare('INSERT INTO locataire VALUES (
+                            nom=:nom,
+                            prenom=:prenom,
+                            email=:email,
+                            password=:password,
+                            telephone=:telephone,
+                            date_inscription=:dateI,
+                            deja_loc=:deja
+                            )');
                         $objet->execute(array(
-                        'email' => $this->params['email'],
-                        'username' => $this->params['username'],
-                        'password' => $this->params['password']
+                        'nom' => $nom,
+                        'prenom' => $prenom,
+                        'email' => $email,
+                        'password' => $password,
+                        'telephone' => $telephone,
+                        'dateI' => $date,
+                        'deja' => $dejaLoc
                         ));
                 return $user;
             }
