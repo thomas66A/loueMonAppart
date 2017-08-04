@@ -42,7 +42,8 @@ class loginService
         
         if(empty($this->error) == false)
         {
-        
+        // var_dump('test1');
+        // die();
         return $this->error;
         }
         $this->user = $this->checkUsernamePassword();
@@ -53,7 +54,8 @@ class loginService
         }
         else
         {
-            //$_SESSION = $params;
+            // var_dump('test2');
+            // die(); 
             $_SESSION['user'] = $this->user;
             return $this->user;
         }
@@ -73,10 +75,12 @@ class loginService
             ));
             $user = $objet->fetchAll(PDO::FETCH_ASSOC);
             if(empty($user)==false){
-                
+                // var_dump('test3');
+                // die();
                 return $user;
             }
-            
+            // var_dump('test4');
+            // die();
             return false;
         }
 }

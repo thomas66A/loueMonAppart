@@ -33,28 +33,32 @@ class registerService
     public function launchControls()
         {
    
-        if(empty($this->params['username'])){
-            $this->error['username'] = 'Le nom de l\'utilisateur n\'est pas renseigner';
+        if(empty($this->params['nom'])){
+            $this->error['nom'] = 'Le nom de l\'utilisateur n\'est pas renseigner';
+        }
+
+        if(empty($this->params['prenom'])){
+            $this->error['prenom'] = 'Le prenom de l\'utilisateur n\'est pas renseigner';
         }
 
         if(empty($this->params['email'])){
             $this->error['email'] = 'Le email n\'est pas renseigner';
         }
 
+        if(empty($this->params['telephone'])){
+            $this->error['telephone'] = 'Le nom de l\'utilisateur n\'est pas renseigner';
+        }
+
         if(empty($this->params['password'])){
             $this->error['password'] = 'Le mot de passe n\'est pas renseigner' ;
         }
 
-        if(empty($this->params['confirmePassword'])){
-            $this->error['confirmePassword'] = 'la confirmation du mot de passe n\'est pas renseigner';
+        if(empty($this->params['password2'])){
+            $this->error['password2'] = 'la confirmation du mot de passe n\'est pas renseigner';
         }
     
-        $name = strlen($this->params['username']);
-        if($name<8 || $name>16){
-            $this->error['usernameLength'] = 'Votre nom d\'utilisateur doit comporter entre 8 et 16 caractères';
-        }
 
-        if($this->params['password'] != $this->params['confirmePassword']){
+        if($this->params['password'] != $this->params['password2']){
             $this->error['comparePassword'] = 'les mots de passe ne correspondent pas';
         }
 
@@ -85,7 +89,7 @@ class registerService
         public function checkAll(){
             $username = $this->params['username'];
             $password = $this->params['email'];
-            $connexion = new PDO('mysql:host=localhost;dbname=forumExemple;charset=UTF8','root','root');
+            $connexion = new PDO('mysql:host=localhost;dbname=locappart;charset=UTF8','root','root');
             $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $connexion->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
@@ -95,7 +99,7 @@ class registerService
                 'username' => $this->params['username']
             ));
             $user = $objet->fetchAll(PDO::FETCH_ASSOC);
-            if(empty($user)==false){
+            if(empty($user)){
                         $objet = $connexion->prepare('INSERT INTO locataire VALUES (username=:username, email=:email, password=:password)');
                         $objet->execute(array(
                         'email' => $this->params['email'],
