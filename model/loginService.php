@@ -42,8 +42,6 @@ class loginService
         
         if(empty($this->error) == false)
         {
-        // var_dump('test1');
-        // die();
         return $this->error;
         }
         $this->user = $this->checkUsernamePassword();
@@ -53,9 +51,7 @@ class loginService
             return $this->error;
         }
         else
-        {
-            // var_dump('test2');
-            // die(); 
+        { 
             $_SESSION['user'] = $this->user;
             return $this->user;
         }
@@ -68,19 +64,15 @@ class loginService
             $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $connexion->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
-            $objet = $connexion->prepare('SELECT id, nom FROM locataire WHERE nom=:nom AND password=:password');
+            $objet = $connexion->prepare('SELECT id, nom FROM user WHERE nom=:nom AND password=:password');
             $objet->execute(array(
                 'password' => $password,
                 'nom' => $nom
             ));
             $user = $objet->fetchAll(PDO::FETCH_ASSOC);
-            if(empty($user)==false){
-                // var_dump('test3');
-                // die();
+            if(empty($user)==false){           
                 return $user;
             }
-            // var_dump('test4');
-            // die();
             return false;
         }
 }

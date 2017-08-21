@@ -7,11 +7,11 @@
 
 <nav>
     <button><a href="location">LES LOCATIONS</a></button>
-    <button><a href="creerCompteLocataireView">CREER UN COMPTE LOCATAIRE</a></button>
-    <button><a href="creerCompteBailleur">CREER UN COMPTE BAILLEUR</a></button>
+    <?php if(empty($_SESSION['user']) == true):?>
+    <button><a href="creerCompteUserView">CREER UN COMPTE UTILISATEUR</a></button>
+    <?php endif; ?>
 </nav>
 <?php if(empty($_SESSION['user']) == true):?>
-
 <div id="connection">    
     <h1>CONNECTION</h1>
     <form action="loginService" method="post">
@@ -23,9 +23,13 @@
         <label>MOT DE PASSE:</label><br>
         <input class="formInput" type="password" name="password" value="" />
     </div>
-
     <button class="validation" type="submit">Login</button>
 </form>
 </div>
+<?php endif; ?>
+<?php if(empty($_SESSION['user']) == false):?>
+<nav>
+    <button><a href="offreLocationView">CREER UNE OFFRE DE LOCATION</a></button>
+</nav>
 <?php endif; ?>
 <?php echo $footer ?>

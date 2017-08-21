@@ -5,11 +5,18 @@
 <nav>
     <button><a href="location">LES LOCATIONS</a></button>
     <button><a href="accueil">ACCUEIL</a></button>
-    <button><a href="creerCompteBailleur">CREER UN COMPTE BAILLEUR</a></button>
 </nav>
+<h1><?php 
+if(isset($_SESSION['erreur']))
+{
+echo "<pre>";
+print_r($_SESSION['erreur']);
+echo "</pre>";
+}
+?>
 <div id="connection">    
-    <h1>Creer votre compte locataire</h1>
-    <form action="creerCompteLocataire" method="post">
+    <h1>Creer votre compte Locataire</h1>
+    <form action="creerCompteUser" method="post">
     <div class="form">
         <label>NOM: </label><br>
         <input class="formInput" type="text" name="nom" value=""/>

@@ -96,7 +96,7 @@ class registerService
             $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $connexion->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
-            $objet = $connexion->prepare('SELECT nom, email FROM locataire WHERE nom=:nom AND email=:email');
+            $objet = $connexion->prepare('SELECT nom, email FROM user WHERE nom=:nom AND email=:email');
             $objet->execute(array(
                 'email' => $this->params['email'],
                 'nom' => $this->params['nom']
@@ -107,25 +107,26 @@ class registerService
                         $date = date('d-m-y');
                         $password = $this->params['password'];
                         $telephone = $this->params['telephone'];
-                        $dejaLoc = 0;
-                        $objet = $connexion->prepare('INSERT INTO locataire VALUES (
+                        
+                        /*var_dump($nom . " " . $prenom . " " . $email . " " . $telephone . " " . $date . " " . $dejaLoc . " " . $password);
+                        die();*/
+                        $objet = $connexion->prepare('INSERT INTO user SET 
                             nom=:nom,
                             prenom=:prenom,
                             email=:email,
-                            password=:password,
                             telephone=:telephone,
                             date_inscription=:dateI,
-                            deja_loc=:deja
-                            )');
+                            password=:password
+                            ');
                         $objet->execute(array(
                         'nom' => $nom,
                         'prenom' => $prenom,
                         'email' => $email,
-                        'password' => $password,
                         'telephone' => $telephone,
                         'dateI' => $date,
-                        'deja' => $dejaLoc
+                        'password' => $password
                         ));
+                        $user = true;
                 return $user;
             }
             return false;
