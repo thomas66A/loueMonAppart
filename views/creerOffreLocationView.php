@@ -16,7 +16,7 @@ echo "</pre>";
 ?>
 <div id="connection">    
     <h1>Mettre en location un bien</h1>
-    <form action="creerOffreLocation" method="post">
+    <form action="creerOffreLocation" method="post" enctype="multipart/form-data">
     <div class="form">
         <label>Type de bien: </label><br>
         <select name="type">
@@ -56,6 +56,10 @@ echo "</pre>";
         <input class="formInput" type="text" name="etage" value="" />
     </div>
     <div class="form">
+        <label>Numero de la rue:</label><br>
+        <input class="formInput" type="text" name="numRue" value="" />
+    </div>
+    <div class="form">
         <label>Nom de la rue:</label><br>
         <input class="formInput" type="text" name="nomRue" value="" />
     </div>
@@ -71,18 +75,19 @@ echo "</pre>";
         <label>Pays:</label><br>
         <input class="formInput" type="text" name="pays" value="" />
     </div>
-    <div class="form">
-        <label>Nom de la rue:</label><br>
-        <input class="formInput" type="text" name="nomRue" value="" />
-    </div>
+    
     <div class="form">
         <label>Disponible: </label><br>
-        <select name="type">
+        <select name="dispo">
             <option value="oui">Oui</option>
             <option value="non">Non</option>
         </select>
     </div>
-    <input type="hidden" value=<?php echo $_SESSION['user'][0]['id'];?>>
+    <input type="hidden"  name="idProprio" value="<?php echo $_SESSION['user'][0]['id'];?>">
+    <div class="form" id="telechargement">
+        <label >Charger une photo de l'appartement:<br>(Vous pourrez en charger d'autre dans votre page "admin") </label><br>
+        <input type="file" name="photo1">
+    </div>
     <button class="validation" type="submit">CREER COMPTE</button>
 </form>
 </div>

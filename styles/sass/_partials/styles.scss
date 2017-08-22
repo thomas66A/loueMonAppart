@@ -85,7 +85,26 @@ nav
     {
         margin-bottom:10px;
     }
-    input{
+    input[type=text]{
+        width:300px;
+        height:30px;
+        border-radius:10px;
+        box-shadow: inset 3px 3px 3px black;
+        padding-left:10px;
+        margin-bottom:10px;
+    }
+    input[type=file]
+    {
+        
+        height:initial;
+        border-radius:initial;
+        box-shadow: initial;
+        padding-left:initial;
+        margin-top:10px;
+        margin-bottom:30px;
+    }
+    textarea, select
+    {
         width:300px;
         height:30px;
         border-radius:10px;
@@ -100,6 +119,10 @@ nav
         border-radius:7px;
         box-shadow:3px 3px 3px black;
         margin-bottom:10px;
+    }
+    #telechargement
+    {
+        margin-top:25px;
     }
 }
 

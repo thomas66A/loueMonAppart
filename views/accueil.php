@@ -29,7 +29,7 @@
 <?php endif; ?>
 <?php if(empty($_SESSION['user']) == false):?>
 <nav>
-    <button><a href="offreLocationView">CREER UNE OFFRE DE LOCATION</a></button>
+    <button><a href="creerOffreLocationView">CREER UNE OFFRE DE LOCATION</a></button>
 </nav>
 <?php endif; ?>
 <?php echo $footer ?>

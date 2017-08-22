@@ -3,6 +3,7 @@ session_start();
 require 'flight/Flight.php';
 require 'model/loginService.php';
 require 'model/creerCompteUser.php';
+require 'model/creerOffreLocation.php';
 require 'model/User.php';
 
 Flight::render('header', array('heading' => 'hello'), 'header');
@@ -25,8 +26,8 @@ Flight::route('/creerCompteUserView', function(){
     Flight::render('creerCompteUserView');
 });
 
-Flight::route('/offreLocationView', function(){
-    Flight::render('offreLocationView');
+Flight::route('/creerOffreLocationView', function(){
+    Flight::render('creerOffreLocationView');
 });
 
 Flight::route('POST /loginService', function(){
@@ -58,6 +59,19 @@ Flight::route('POST /creerCompteUser', function(){
         Flight::redirect('/');
 });
 
+Flight::route('POST /creerOffreLocation', function(){
+    unset($_SESSION['erreur']);
+    $service = new registerOffreLocation();
+    $service->setParams(Flight::request()->data->getData());
+    $service->setFiles(Flight::request()->files->getData());
+    $service->launchControls();
+    if($service->getError()){
+        $_SESSION['erreur']=$service->getError();
+        Flight::redirect('/creerOffreLocationView');
+    }
+    else
+        Flight::redirect('/');
+});
 
 Flight::start();
 ?>

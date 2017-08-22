@@ -1,0 +1,12 @@
+/******
+* Alfonso: petit à petit mais surement tu progresseras.
+* Essaie de commencer par les entités ( les classes qui représentent les tables en base
+* de données comme par exemple: User, Appartement, Messages) plutot que par la logique Service
+*
+* Tu as bien compris la logique de Flight mais il faut continuer à travailler sur la partie
+* objet qui met un certain temps à s'imprimer dans la tête.
+*
+* Comme tu es quelqu'un de hyper technique je ne me fais pas soucis pour toi.
+* Il faut juste pratiquer.
+*
+* Un plaisir de t'avoir en classe délégué. À bientôt j'espère.

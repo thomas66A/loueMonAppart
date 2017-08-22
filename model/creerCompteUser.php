@@ -24,7 +24,7 @@ class registerService
     }
     public function getUser()
     {
-        return $this->User;
+        return $this->user;
     }
     public function setUser($user)
     {

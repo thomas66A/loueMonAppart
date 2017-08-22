@@ -77,7 +77,21 @@ nav {
     margin-bottom: 10px; }
   #connection label {
     margin-bottom: 10px; }
-  #connection input {
+  #connection input[type=text] {
+    width: 300px;
+    height: 30px;
+    border-radius: 10px;
+    box-shadow: inset 3px 3px 3px black;
+    padding-left: 10px;
+    margin-bottom: 10px; }
+  #connection input[type=file] {
+    height: initial;
+    border-radius: initial;
+    box-shadow: initial;
+    padding-left: initial;
+    margin-top: 10px;
+    margin-bottom: 30px; }
+  #connection textarea, #connection select {
     width: 300px;
     height: 30px;
     border-radius: 10px;
@@ -91,3 +105,5 @@ nav {
     border-radius: 7px;
     box-shadow: 3px 3px 3px black;
     margin-bottom: 10px; }
+  #connection #telechargement {
+    margin-top: 25px; }
