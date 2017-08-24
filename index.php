@@ -5,6 +5,7 @@ require 'model/loginService.php';
 require 'model/creerCompteUser.php';
 require 'model/creerOffreLocation.php';
 require 'model/User.php';
+//require 'model/afficheLocation.php';
 
 Flight::render('header', array('heading' => 'hello'), 'header');
 Flight::render('footer', array('test' => 'word'), 'footer');
@@ -18,12 +19,17 @@ Flight::route('/accueil', function(){
     Flight::render('accueil');
 });
 
-Flight::route('/signup', function(){
-    Flight::render('signup');
-});
+// Flight::route('/signup', function(){
+//     Flight::render('signup');
+// });
 
 Flight::route('/creerCompteUserView', function(){
     Flight::render('creerCompteUserView');
+});
+
+Flight::route('/afficheAppartViews', function(){
+
+    Flight::render('afficheAppartViews');
 });
 
 Flight::route('/creerOffreLocationView', function(){

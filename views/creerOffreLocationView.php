@@ -3,7 +3,7 @@
     <img src="image/loue-mon-appartement.png">
 </header>
 <nav>
-    <button><a href="location">LES LOCATIONS</a></button>
+    <button><a href="afficheAppartViews">LES LOCATIONS</a></button>
     <button><a href="accueil">ACCUEIL</a></button>
 </nav>
 <h1><?php 

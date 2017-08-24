@@ -13,6 +13,7 @@ class Appart{
     private $ville;
     private $pays;
     private $dispo;
+	private $lienPhoto;
 
     public function __construct($donnees = array())
     {
@@ -121,6 +122,13 @@ class Appart{
 
 	public function setDispo($dispo){
 		$this->dispo = $dispo;
+	}
+	public function getLienPhoto(){
+		return $this->lienPhoto;
+	}
+
+	public function setLienPhoto($lienPhoto){
+		$this->lienPhoto = $lienPhoto;
 	}
 
     public function hydrate($donnees)

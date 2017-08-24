@@ -6,7 +6,7 @@
 </header>
 
 <nav>
-    <button><a href="location">LES LOCATIONS</a></button>
+    <button><a href="afficheAppartViews">LES LOCATIONS</a></button>
     <?php if(empty($_SESSION['user']) == true):?>
     <button><a href="creerCompteUserView">CREER UN COMPTE UTILISATEUR</a></button>
     <?php endif; ?>
