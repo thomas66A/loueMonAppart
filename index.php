@@ -1,11 +1,8 @@
 <?php
 session_start();
 require 'flight/Flight.php';
-require 'model/loginService.php';
-require 'model/creerCompteUser.php';
-require 'model/creerOffreLocation.php';
-require 'model/User.php';
-//require 'model/afficheLocation.php';
+require 'autoloader.php';
+
 
 Flight::render('header', array('heading' => 'hello'), 'header');
 Flight::render('footer', array('test' => 'word'), 'footer');

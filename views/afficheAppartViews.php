@@ -6,5 +6,7 @@
     <button><a href="afficheAppartViews">LES LOCATIONS</a></button>
     <button><a href="accueil">ACCUEIL</a></button>
 </nav>
-
+<?php
+include 'model/afficheAppart.php';
+?>
 <?php echo $footer ?>

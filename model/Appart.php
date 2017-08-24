@@ -20,12 +20,12 @@ class Appart{
         $this->hydrate($donnees);
     }
 
-    public function getIdPropio(){
-		return $this->idPropio;
+    public function getIdProprio(){
+		return $this->idProprio;
 	}
 
-	public function setIdPropio($idPropio){
-		$this->idPropio = $idPropio;
+	public function setIdProprio($idProprio){
+		$this->idProprio = $idProprio;
 	}
 
 	public function getType(){
@@ -41,7 +41,7 @@ class Appart{
 	}
 
 	public function setNbCouchage($nbCouchage){
-		$this->type = $nbCouchage;
+		$this->nbCouchage = $nbCouchage;
 	}
 
 	public function getPrix(){
