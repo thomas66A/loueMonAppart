@@ -25,12 +25,18 @@ Flight::route('/creerCompteUserView', function(){
 });
 
 Flight::route('/afficheAppartViews', function(){
-
+    $bdd = new bddManager();
+    $affiche = $bdd->getAllById();
+    Flight::set('affiche', $affiche);  
     Flight::render('afficheAppartViews');
 });
 
 Flight::route('/creerOffreLocationView', function(){
     Flight::render('creerOffreLocationView');
+});
+
+Flight::route('/louerAppartViews/@id', function($id){
+    Flight::render('louerAppartViews');
 });
 
 Flight::route('POST /loginService', function(){
@@ -62,7 +68,7 @@ Flight::route('POST /creerCompteUser', function(){
         Flight::redirect('/');
 });
 
-Flight::route('POST /creerOffreLocation', function(){
+Flight::route('POST /registerOffreLocation', function(){
     unset($_SESSION['erreur']);
     $service = new registerOffreLocation();
     $service->setParams(Flight::request()->data->getData());

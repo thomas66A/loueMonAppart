@@ -1,6 +1,7 @@
 <?php
 class Appart{
-    private $idPropio;
+	private $id;
+    private $idProprio;
     private $type;
     private $nbCouchage;
     private $prix; 
@@ -19,6 +20,14 @@ class Appart{
     {
         $this->hydrate($donnees);
     }
+
+	public function getId(){
+		return $this->id;
+	}
+
+	public function setId($id){
+		$this->id = $id;
+	}
 
     public function getIdProprio(){
 		return $this->idProprio;

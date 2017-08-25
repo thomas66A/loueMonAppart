@@ -1,10 +1,10 @@
 <?php echo $header ?>
 <header>
-    <img src="image/loue-mon-appartement.png">
+    <img src="/loueMonAppart/image/loue-mon-appartement.png">
 </header>
 <nav>
-    <button><a href="afficheAppartViews">LES LOCATIONS</a></button>
-    <button><a href="accueil">ACCUEIL</a></button>
+    <button><a href="/loueMonAppart/afficheAppartViews">LES LOCATIONS</a></button>
+    <button><a href="/loueMonAppart/accueil">ACCUEIL</a></button>
 </nav>
 <h1><?php 
 if(isset($_SESSION['erreur']))
@@ -16,7 +16,7 @@ echo "</pre>";
 ?>
 <div id="connection">    
     <h1>Mettre en location un bien</h1>
-    <form action="creerOffreLocation" method="post" enctype="multipart/form-data">
+    <form action="registerOffreLocation" method="post" enctype="multipart/form-data">
     <div class="form">
         <label>Type de bien: </label><br>
         <select name="type">

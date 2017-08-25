@@ -43,7 +43,7 @@ if(!isset($erreur))
 		  include("redimensionnerJpg.php");
 		  }
      }
-     else //Sinon (la fonction renvoie FALSE).
+     else
      {
           echo 'Echec de l\'upload !';
      }

@@ -7,6 +7,7 @@ font-style: normal;
 .ligne
 {
 clear:both;
+visibility: hidden;
 }
 body{
     background-color:lightcyan;
@@ -21,6 +22,7 @@ header{
     text-align:center;
     background-color:lightgrey;
     box-shadow:5px 5px 5px black;
+    z-index:3;
     
     img{
         width:100%;
@@ -52,6 +54,7 @@ nav
 {
     text-align:center;
     margin-top:120px;
+    z-index:2;
     button{
         width:300px;
         height:25px;
@@ -124,8 +127,58 @@ nav
     {
         margin-top:25px;
     }
+    
 }
+#lesAnnonces
+    {
+        position:relative;
+        width:480px;
+        left:50%;
+        margin-left:-240px;
+        text-align:center;
+        z-index:1;
+        #annonce
+        {
+            width:460px;
+            border:2px solid black;
+            margin-bottom:40px;
+            h1, h2
+            {
+                margin-top:20px;
+                margin-bottom:20px;
+                font-weight:bold;
+            }
+            p
+            {
+                margin-left:15px;
+                float:left;
+            }
+            img
+            {
+                width:450px;
+                margin-left:auto;
+                margin-right:auto;
+            }
+            button{
+        height:40px;
+        width:300px;
+        background-color:red;
+        border-radius:20px;
+        margin-right:5px;
+        margin-top:5px;
+        margin-bottom:10px;
+        border:2px solid white;
+        a{
+            color:white;
+            font-weight:bold;
+            text-decoration:none;
+            font-size:3em;
+            line-height:32px;
+        }
+    }
+        }
 
+    }
 @media screen and (min-width: 480px)
 {
     
