@@ -39,6 +39,10 @@ Flight::route('/louerAppartViews/@id', function($id){
     Flight::render('louerAppartViews');
 });
 
+Flight::route('/reservationAppartViews/@id', function($id){
+    Flight::render('reservationAppartViews');
+});
+
 Flight::route('POST /loginService', function(){
     unset($_SESSION['erreur']);
     $service = new loginService();
@@ -55,7 +59,7 @@ Flight::route('/deconnec', function(){
     Flight::redirect('/');
 });
 
-Flight::route('POST /creerCompteUser', function(){
+Flight::route('POST /registerService', function(){
     unset($_SESSION['erreur']);
     $service = new registerService();
     $service->setParams(Flight::request()->data->getData());

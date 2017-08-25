@@ -16,7 +16,7 @@ echo "</pre>";
 ?>
 <div id="connection">    
     <h1>Creer votre compte Locataire</h1>
-    <form action="/loueMonAppart/creerCompteUser" method="post">
+    <form action="/loueMonAppart/registerService" method="post">
     <div class="form">
         <label>NOM: </label><br>
         <input class="formInput" type="text" name="nom" value=""/>

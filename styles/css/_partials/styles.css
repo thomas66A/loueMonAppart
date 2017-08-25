@@ -142,3 +142,43 @@ nav {
         text-decoration: none;
         font-size: 3em;
         line-height: 32px; }
+
+@media screen and (min-width: 1000px) {
+  #lesAnnonces {
+    width: 960px;
+    left: 50%;
+    margin-left: -480px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    z-index: 1; }
+    #lesAnnonces #annonce {
+      width: 460px;
+      border: 2px solid black;
+      margin-bottom: 40px; }
+      #lesAnnonces #annonce h1, #lesAnnonces #annonce h2 {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-weight: bold; }
+      #lesAnnonces #annonce p {
+        margin-left: 15px;
+        float: left; }
+      #lesAnnonces #annonce img {
+        width: 450px;
+        margin-left: auto;
+        margin-right: auto; }
+      #lesAnnonces #annonce button {
+        height: 40px;
+        width: 300px;
+        background-color: red;
+        border-radius: 20px;
+        margin-right: 5px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        border: 2px solid white; }
+        #lesAnnonces #annonce button a {
+          color: white;
+          font-weight: bold;
+          text-decoration: none;
+          font-size: 3em;
+          line-height: 32px; } }

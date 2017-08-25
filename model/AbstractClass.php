@@ -35,6 +35,14 @@ abstract class AbstractClass
         $pdo->execute($array);
         return false;
     }
+
+    protected function findId($query, $array)
+    {
+        $pdo = $this->getConnexion()->prepare($query); 
+        $pdo->execute($array);
+        $result = $pdo->fetch();
+        return $result;
+    }
     
     
 }

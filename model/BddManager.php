@@ -20,6 +20,14 @@ class BddManager extends AbstractClass
         }
         return $lesApparts;
     }
+
+    public function getLastId()
+    {
+        $query = 'SELECT MAX(id) FROM appartement';
+        $array = array();
+        $appartementId = $this->findId($query,$array);
+        return $appartementId;
+    }
     
     
     
