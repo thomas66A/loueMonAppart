@@ -17,8 +17,10 @@ $affiche = Flight::get('affiche');?>
         <h2 id="villeAnnonce">A <? echo ucfirst($a->getVille()); ?></h2>
         <p id="descriptionAnnonce">Description:&nbsp;<? echo ucfirst($a->getDescription()); ?></p>
         <hr class="ligne">
-        <button id="louerBien"><a href="/loueMonAppart/reservationAppartViews/<?=$a->getId()?>">JE LOUE CE BIEN</a></button>
+        
+        <button id="louerBien"><a href="/loueMonAppart/reservationAppartViews/<?php echo $a->getId();?>">JE LOUE CE BIEN</a></button>
 </div>
 <?php endforeach;?> 
 </div>
+
 <?php echo $footer ?>

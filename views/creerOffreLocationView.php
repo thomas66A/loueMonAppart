@@ -47,10 +47,7 @@ echo "</pre>";
         <label>Description: </label><br>
         <textarea name="description" value=""> </textarea>
     </div>
-    <div class="form">
-        <label>Appartement numéro:</label><br>
-        <input class="formInput" type="text" name="numAppart" value="" />
-    </div>
+    
     <div class="form">
         <label>Etage:</label><br>
         <input class="formInput" type="text" name="etage" value="" />
@@ -79,8 +76,8 @@ echo "</pre>";
     <div class="form">
         <label>Disponible: </label><br>
         <select name="dispo">
-            <option value="oui">Oui</option>
-            <option value="non">Non</option>
+            <option value="0">Non</option>
+            <option value="1">Oui</option>
         </select>
     </div>
     <input type="hidden"  name="idProprio" value="<?php echo $_SESSION['user'][0]['id'];?>">

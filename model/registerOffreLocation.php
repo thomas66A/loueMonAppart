@@ -61,12 +61,8 @@ class registerOffreLocation
             $this->error['description'] = 'Vous n\'avez pas decrit votre offre de location';
         }
 
-        if(empty($this->params['numAppart'])){
-            $this->error['numAppart'] = 'Le numero de l\'appartement n\'est pas renseigner' ;
-        }
-
-        if(empty($this->params['etage'])){
-            $this->error['etage'] = 'le numero d\'étage n\'est pas renseigner';
+        if(empty($this->params['etage']) && $this->params['etage'] !== "0"){
+            $this->error['etage'] = 'le numero d\'étage n\'est pas renseigner';        
         }
     
         if(empty($this->params['numRue'])){
@@ -89,30 +85,39 @@ class registerOffreLocation
             $this->error['pays'] = 'le nom du pays n\'est pas renseigner';
         }
 
-        if(empty($this->params['dispo'])){
+        if(empty($this->params['dispo']) && $this->params['dispo'] !== "0"){
             $this->error['dispo'] = 'la disponibilité du logement n\'est pas renseigner';
         }
-
+        $bdd = new BddManager();
+        $LastIdAppart = $bdd->getLastId();
+        $NvIdAppart = $LastIdAppart[0] + 1;
         $fichier = basename($this->files['photo1']['name']);
-        $laphoto="image" . $this->params['idProprio'];
+        if(!empty($fichier))
+        {
+        $laphoto="image" . "-" . $NvIdAppart . "-" . $this->params['idProprio'];
             if(isset($fichier))
             {                
                 include("service/uploadphoto.php");   
                 $original="image/".$laphoto.".jpg";
                 
            }
+        }
+        else
+        {
+            $original="/loueMonAppart/image/imageVide.jpg";
+        }
             
 
         if(empty($this->error) == false)
         {
         return $this->error;
         }
-        $this->appart = $this->includeNewAppart($original);
+        $this->appart = $this->includeNewAppart($original,$NvIdAppart);
         
         return $this->appart;
         
         }
-        public function includeNewAppart($original){
+        public function includeNewAppart($original,$NvIdAppart){
             
             $connexion = new PDO('mysql:host=localhost;dbname=locappart;charset=UTF8','root','root');
             $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -140,7 +145,7 @@ class registerOffreLocation
                             'nbCouchage' =>$this->params['nbCouchage'],
                             'prix' =>$this->params['prix'],
                             'description'=>$this->params['description'],
-                            'numAppart' =>$this->params['numAppart'],
+                            'numAppart' =>$NvIdAppart,
                             'etage' =>$this->params['etage'],
                             'numRue' =>$this->params['numRue'],
                             'nomRue' =>$this->params['nomRue'],

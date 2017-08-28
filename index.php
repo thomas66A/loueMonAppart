@@ -40,6 +40,12 @@ Flight::route('/louerAppartViews/@id', function($id){
 });
 
 Flight::route('/reservationAppartViews/@id', function($id){
+    $bdd = new BddManager();
+    $afficheAppart = $bdd->getAppartById($id);
+    Flight::set('appart', $afficheAppart);
+    $bbd2 = new BddManager();
+    $afficheDisponibilite = $bbd2->getDisponibilite($id);
+    Flight::set('disponibilite',$afficheDisponibilite);
     Flight::render('reservationAppartViews');
 });
 
