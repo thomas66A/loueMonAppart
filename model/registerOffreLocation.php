@@ -61,7 +61,7 @@ class registerOffreLocation
             $this->error['description'] = 'Vous n\'avez pas decrit votre offre de location';
         }
 
-        if(empty($this->params['etage']) && $this->params['etage'] !== "0"){
+        if(empty($this->params['etage']) && $this->params['etage'] != "0"){
             $this->error['etage'] = 'le numero d\'étage n\'est pas renseigner';        
         }
     
@@ -98,7 +98,7 @@ class registerOffreLocation
             if(isset($fichier))
             {                
                 include("service/uploadphoto.php");   
-                $original="image/".$laphoto.".jpg";
+                $original="/loueMonAppart/image/".$laphoto.".jpg";
                 
            }
         }

@@ -16,10 +16,6 @@ Flight::route('/accueil', function(){
     Flight::render('accueil');
 });
 
-// Flight::route('/signup', function(){
-//     Flight::render('signup');
-// });
-
 Flight::route('/creerCompteUserView', function(){
     Flight::render('creerCompteUserView');
 });
@@ -40,6 +36,7 @@ Flight::route('/louerAppartViews/@id', function($id){
 });
 
 Flight::route('/reservationAppartViews/@id', function($id){
+
     $bdd = new BddManager();
     $afficheAppart = $bdd->getAppartById($id);
     Flight::set('appart', $afficheAppart);
@@ -90,6 +87,23 @@ Flight::route('POST /registerOffreLocation', function(){
     }
     else
         Flight::redirect('/');
+});
+Flight::route('POST /reservationAppart', function(){
+    unset($_SESSION['erreur']);
+    $service = new reservationAppart();
+    $service->setParams(Flight::request()->data->getData());
+    $id = $_POST['idAppart'];
+    $fac = $service->ControleDonnee();
+    if($service->getError()){
+        $_SESSION['erreur']=$service->getError();
+        Flight::redirect('/reservationAppartViews/'.$id);
+    }
+    else
+        Flight::redirect('/');
+});
+Flight::route('/factureViews/@id', function($id){
+
+Flight::render('/factureViews');
 });
 
 Flight::start();

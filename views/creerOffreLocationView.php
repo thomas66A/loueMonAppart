@@ -1,6 +1,9 @@
 <?php echo $header ?>
 <header>
     <img src="/loueMonAppart/image/loue-mon-appartement.png">
+    <?php if(empty($_SESSION['user']) == false):?>
+<button><a href="deconnec">X</a></button>
+<?php endif; ?>
 </header>
 <nav>
     <button><a href="/loueMonAppart/afficheAppartViews">LES LOCATIONS</a></button>
@@ -82,7 +85,7 @@ echo "</pre>";
     </div>
     <input type="hidden"  name="idProprio" value="<?php echo $_SESSION['user'][0]['id'];?>">
     <div class="form" id="telechargement">
-        <label >Charger une photo de l'appartement:<br>(Vous pourrez en charger d'autre dans votre page "admin") </label><br>
+        <label >Charger une photo de l'appartement: </label><br>
         <input type="file" name="photo1">
     </div>
     <button class="validation" type="submit">CREER COMPTE</button>

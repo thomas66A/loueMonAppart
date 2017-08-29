@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:8889
--- Généré le :  Ven 25 Août 2017 à 12:11
+-- Généré le :  Mar 29 Août 2017 à 16:53
 -- Version du serveur :  5.6.35
 -- Version de PHP :  7.1.1
 
@@ -34,7 +34,7 @@ CREATE TABLE `appartement` (
   `codepostal` int(11) NOT NULL,
   `ville` varchar(100) NOT NULL,
   `pays` varchar(100) NOT NULL,
-  `dispo` tinyint(1) NOT NULL,
+  `dispo` int(11) NOT NULL,
   `lienPhoto` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -43,27 +43,10 @@ CREATE TABLE `appartement` (
 --
 
 INSERT INTO `appartement` (`id`, `idProprio`, `type`, `nbCouchage`, `prix`, `description`, `numAppart`, `etage`, `numRue`, `nomRue`, `codepostal`, `ville`, `pays`, `dispo`, `lienPhoto`) VALUES
-(1, 4, 'appartement', 1, 250, ' belle appart', 20, 2, 12, 'de gaulle', 66000, 'perpignan', 'France', 0, ''),
-(2, 1, 'mobilhome', 3, 200, ' belle idee pour les vacances', 25, 1, 14, 'de la garrigue', 66700, 'labas', 'France', 0, ''),
-(3, 1, 'appartement', 8, 200, ' bel appart', 25, 1, 15, 'du verre', 66390, 'baixas', 'France', 0, ''),
-(5, 1, 'appartement', 1, 200, ' bel appart', 2, 2, 25, 'de gaulle', 66000, 'perpignan', 'France', 0, 'image/image1.jpg'),
-(6, 2, 'appartement', 2, 250, ' appart de luxe', 2, 3, 25, 'de gaulle', 66000, 'perpignan', 'France', 0, 'image/image2.jpg'),
-(7, 4, 'appartement', 6, 360, 'bel appart', 25, 1, 10, 'rue monge', 66000, 'baixas', 'France', 0, 'image/image4.jpg');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `commentaire`
---
-
-CREATE TABLE `commentaire` (
-  `id` int(11) NOT NULL,
-  `id_proprio` int(11) NOT NULL,
-  `id_locataire` int(11) NOT NULL,
-  `id_appart` int(11) NOT NULL,
-  `id_commentaire` int(11) NOT NULL,
-  `commentaire` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+(18, 1, 'appartement', 4, 300, ' Tres belle appartement en plein coeur de Perpignan. Commodité à proximité.', 1, 3, 25, 'Rue de castillet', 66000, 'perpignan', 'France', 1, '/loueMonAppart/image/image-1-1.jpg'),
+(19, 1, 'villa', 6, 500, ' Villa en pleine nature. Calme garantie. Sans vis à vis. Piscine', 19, 1, 33, 'Chemin des vignes', 66300, 'Banuyls Dels Aspres', 'France', 1, '/loueMonAppart/image/image-19-1.jpg'),
+(20, 4, 'chalet', 3, 400, ' Tres beaux chalet, en pleine montagne, mais avec vue sur mer. Proche des stations de sky.', 20, 1, 3, 'Avenue du mont-blanc', 66210, 'Font-Romeu', 'France', 1, '/loueMonAppart/image/image-20-4.jpg'),
+(21, 3, 'mobilhome', 4, 200, ' Beau mobil-home neuf. En pleine campgne. Foret et randonnée à proximité.', 21, 0, 1, 'Le champs fleury', 66390, 'baixas', 'France', 1, '/loueMonAppart/image/image-21-3.jpg');
 
 -- --------------------------------------------------------
 
@@ -73,28 +56,24 @@ CREATE TABLE `commentaire` (
 
 CREATE TABLE `location` (
   `id` int(11) NOT NULL,
-  `id_proprio` int(11) NOT NULL,
-  `id_loueur` int(11) NOT NULL,
-  `id_appart` int(11) NOT NULL,
-  `debut_loc` date NOT NULL,
-  `fin_loc` date NOT NULL,
+  `idProprio` int(11) NOT NULL,
+  `idLoueur` int(11) NOT NULL,
+  `idAppart` int(11) NOT NULL,
+  `debutLoc` date NOT NULL,
+  `finLoc` date NOT NULL,
   `prix` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
 --
--- Structure de la table `photo`
+-- Contenu de la table `location`
 --
 
-CREATE TABLE `photo` (
-  `id` int(11) NOT NULL,
-  `idProprio` int(11) NOT NULL,
-  `idAppart` int(11) NOT NULL,
-  `lien` varchar(255) NOT NULL,
-  `titre` varchar(100) NOT NULL,
-  `description` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO `location` (`id`, `idProprio`, `idLoueur`, `idAppart`, `debutLoc`, `finLoc`, `prix`) VALUES
+(10, 4, 3, 20, '2017-09-01', '2017-09-12', 800),
+(11, 1, 1, 19, '2017-09-21', '2017-09-30', 1000),
+(12, 4, 2, 20, '2017-10-01', '2017-10-18', 1200),
+(13, 1, 4, 18, '2017-09-01', '2017-08-17', -600),
+(14, 1, 4, 19, '2017-12-02', '2017-12-31', 2500);
 
 -- --------------------------------------------------------
 
@@ -133,25 +112,13 @@ ALTER TABLE `appartement`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `commentaire`
---
-ALTER TABLE `commentaire`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Index pour la table `location`
 --
 ALTER TABLE `location`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `proprio` (`id_proprio`),
-  ADD KEY `loueur` (`id_loueur`),
-  ADD KEY `appart` (`id_appart`);
-
---
--- Index pour la table `photo`
---
-ALTER TABLE `photo`
-  ADD PRIMARY KEY (`id`);
+  ADD KEY `proprio` (`idProprio`),
+  ADD KEY `loueur` (`idLoueur`),
+  ADD KEY `appart` (`idAppart`);
 
 --
 -- Index pour la table `user`
@@ -167,35 +134,14 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `appartement`
 --
 ALTER TABLE `appartement`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
---
--- AUTO_INCREMENT pour la table `commentaire`
---
-ALTER TABLE `commentaire`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT pour la table `location`
 --
 ALTER TABLE `location`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT pour la table `photo`
---
-ALTER TABLE `photo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- Contraintes pour les tables exportées
---
-
---
--- Contraintes pour la table `location`
---
-ALTER TABLE `location`
-  ADD CONSTRAINT `appart` FOREIGN KEY (`id_appart`) REFERENCES `appartement` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `loueur` FOREIGN KEY (`id_loueur`) REFERENCES `user` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `proprio` FOREIGN KEY (`id_proprio`) REFERENCES `user` (`id`) ON DELETE CASCADE;

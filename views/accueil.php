@@ -28,7 +28,7 @@
 </div>
 <?php endif; ?>
 <?php if(empty($_SESSION['user']) == false):?>
-<nav>
+<nav id="offre">
     <button><a href="/loueMonAppart/creerOffreLocationView">CREER UNE OFFRE DE LOCATION</a></button>
 </nav>
 <?php endif; ?>
